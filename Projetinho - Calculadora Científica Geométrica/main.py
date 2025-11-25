@@ -1,4 +1,6 @@
 import os
+
+#Biblioteca para funções matemáticas
 import math
 
 #Declaração das Funções
@@ -36,7 +38,7 @@ def menuPrincipal():
                 calcularAreaCirculos()
 
             case 3:
-                pass
+                teoremaPitagoras()
 
             case 4:
                 _= os.system('cls')
@@ -54,7 +56,6 @@ def menuPrincipal():
                 _= os.system('pause')
 
                 menuPrincipal()
-
 
 def calcularAreaPoligonos():
     _= os.system('cls')
@@ -88,7 +89,7 @@ def calcularAreaPoligonos():
             escolhaUsuario = int(input())
 
         except ValueError:
-            print("\n[ERRO]Entrada inválida! Encerrando Programa\n")
+            print("\n[ERRO]Entrada inválida! Encerrando Programa.\n")
 
             _= os.system('pause')
 
@@ -140,7 +141,7 @@ def calcularAreaPoligonos():
                 menuPrincipal()
 
             case _:
-                print("\n[ERRO]Entrada inválida! Encerrando Programa\n")
+                print("\n[ERRO]Entrada inválida! Encerrando Programa.\n")
 
                 _= os.system('pause')
 
@@ -194,7 +195,7 @@ def calcularAreaTriangulo():
                     escolhaUsuario = int(input())
 
                 except ValueError:
-                    print("\n[ERRO]Entrada inválida! Encerrando Programa\n")
+                    print("\n[ERRO]Entrada inválida! Encerrando Programa.\n")
 
                     _= os.system('pause')
 
@@ -209,7 +210,7 @@ def calcularAreaTriangulo():
                             calcularAreaPoligonos()
 
                         case _:
-                            print("\n[ERRO]Entrada inválida! Encerrando Programa\n")
+                            print("\n[ERRO]Entrada inválida! Encerrando Programa.\n")
 
                             _= os.system('pause')
 
@@ -237,7 +238,7 @@ def calcularAreaTriangulo():
                     escolhaUsuario = int(input())
 
                 except ValueError:
-                    print("\n[ERRO]Entrada inválida! Encerrando Programa\n")
+                    print("\n[ERRO]Entrada inválida! Encerrando Programa.\n")
 
                     _= os.system('pause')
 
@@ -252,7 +253,7 @@ def calcularAreaTriangulo():
                             calcularAreaPoligonos()
 
                         case _:
-                            print("\n[ERRO]Entrada inválida! Encerrando Programa\n")
+                            print("\n[ERRO]Entrada inválida! Encerrando Programa.\n")
 
                             _= os.system('pause')
 
@@ -278,7 +279,7 @@ def calcularAreaTriangulo():
                     escolhaUsuario = int(input())
 
                 except ValueError:
-                    print("\n[ERRO]Entrada inválida! Encerrando Programa\n")
+                    print("\n[ERRO]Entrada inválida! Encerrando Programa.\n")
 
                     _= os.system('pause')
 
@@ -293,7 +294,7 @@ def calcularAreaTriangulo():
                             calcularAreaPoligonos()
 
                         case _:
-                            print("\n[ERRO]Entrada inválida! Encerrando Programa\n")
+                            print("\n[ERRO]Entrada inválida! Encerrando Programa.\n")
 
                             _= os.system('pause')
 
@@ -303,7 +304,7 @@ def calcularAreaTriangulo():
                 calcularAreaPoligonos()
 
             case _:
-                print("\n[ERRO]Entrada inválida! Encerrando Programa\n")
+                print("\n[ERRO]Entrada inválida! Encerrando Programa.\n")
 
                 _= os.system('pause')
 
@@ -330,7 +331,7 @@ def calcularAreaQuadrado():
         escolhaUsuario = int(input())
 
     except ValueError:
-        print("\n[ERRO]Entrada inválida! Encerrando Programa\n")
+        print("\n[ERRO]Entrada inválida! Encerrando Programa.\n")
 
         _= os.system('pause')
 
@@ -345,7 +346,7 @@ def calcularAreaQuadrado():
                 calcularAreaPoligonos()
 
             case _:
-                print("\n[ERRO]Entrada inválida! Encerrando Programa\n")
+                print("\n[ERRO]Entrada inválida! Encerrando Programa.\n")
 
                 _= os.system('pause')
 
@@ -375,7 +376,7 @@ def calcularAreaRetangulo():
         escolhaUsuario = int(input())
 
     except ValueError:
-        print("\n[ERRO]Entrada inválida! Encerrando Programa\n")
+        print("\n[ERRO]Entrada inválida! Encerrando Programa.\n")
 
         _= os.system('pause')
 
@@ -390,7 +391,7 @@ def calcularAreaRetangulo():
                 calcularAreaPoligonos()
 
             case _:
-                print("\n[ERRO]Entrada inválida! Encerrando Programa\n")
+                print("\n[ERRO]Entrada inválida! Encerrando Programa.\n")
 
                 _= os.system('pause')
 
@@ -420,7 +421,7 @@ def calcularAreaLosango():
         escolhaUsuario = int(input())
 
     except ValueError:
-        print("\n[ERRO]Entrada inválida! Encerrando Programa\n")
+        print("\n[ERRO]Entrada inválida! Encerrando Programa.\n")
 
         _= os.system('pause')
 
@@ -435,7 +436,7 @@ def calcularAreaLosango():
                 calcularAreaPoligonos()
 
             case _:
-                print("\n[ERRO]Entrada inválida! Encerrando Programa\n")
+                print("\n[ERRO]Entrada inválida! Encerrando Programa.\n")
 
                 _= os.system('pause')
 
@@ -468,7 +469,7 @@ def calcularAreaTrapezio():
         escolhaUsuario = int(input())
 
     except ValueError:
-        print("\n[ERRO]Entrada inválida! Encerrando Programa\n")
+        print("\n[ERRO]Entrada inválida! Encerrando Programa.\n")
 
         _= os.system('pause')
 
@@ -483,7 +484,7 @@ def calcularAreaTrapezio():
                 calcularAreaPoligonos()
 
             case _:
-                print("\n[ERRO]Entrada inválida! Encerrando Programa\n")
+                print("\n[ERRO]Entrada inválida! Encerrando Programa.\n")
 
                 _= os.system('pause')
 
@@ -527,14 +528,96 @@ def calcularAreaParelologramo():
                 calcularAreaPoligonos()
 
             case _:
-                print("\n[ERRO]Entrada inválida! Encerrando Programa\n")
+                print("\n[ERRO]Entrada inválida! Encerrando Programa.\n")
 
                 _= os.system('pause')
 
                 exit()
 
 def calcularAreaCirculos():
-    pass
+    _= os.system('cls')
+
+    print("--- OPÇÃO SELECIONADA: CÁLCULO DE ÁREA (CÍRCULOS) ---\n")
+
+    print("Qual é o valor do raio do seu círculo?")
+    raioCirculo = float(input())
+
+    resultado = math.pi * (raioCirculo ** 2)
+
+    print(f"\nA área de seu círculo é: {resultado:.2f}\n")
+
+    print("Como você gostaria de proceder?\n")
+    print("1 - Calcular outro círculo")
+    print("2 - Voltar ao Menu Principal")
+
+    try:
+        escolhaUsuario = int(input())
+    
+    except ValueError:
+        print("\n[ERRO]Entrada inválida! Encerrando Programa.\n")
+
+        _= os.system('pause')
+
+        exit()
+
+    else:
+        match escolhaUsuario:
+            case 1:
+                calcularAreaCirculos()
+
+            case 2:
+                menuPrincipal()
+
+            case _:
+                print("\n[ERRO]Entrada inválida! Encerrando Programa.\n")
+
+                _= os.system('pause')
+
+                exit()
+
+def teoremaPitagoras():
+    _= os.system('cls')
+
+    print("--- OPÇÃO SELECIONADA: TEOREMA DE PITÁGORAS ---\n")
+
+    print("Qual é o valor do primeiro lado?")
+    primeiroLado = float(input())
+
+    print("\nQual é o valor do segundo lado?")
+    segundoLado = float(input())
+
+    resultado = math.sqrt((primeiroLado ** 2) + (segundoLado ** 2))
+
+    print(f"\nO valor do terceiro lado do triângulo retângulo é: {resultado:.2f}\n")
+
+    print("Como você gostaria de proceder?\n")
+    print("1 - Calcular o Teorema de outro triângulo")
+    print("2 - Voltar ao Menu Principal")
+
+    try:
+        escolhaUsuario = int(input())
+
+    except ValueError:
+        print("\n[ERRO]Entrada inválida! Encerrando Programa.\n")
+
+        _= os.system('pause')
+
+        exit()
+
+    else:
+        match escolhaUsuario:
+            case 1:
+                teoremaPitagoras()
+
+            case 2:
+                menuPrincipal()
+
+            case _:
+                print("\n[ERRO]Entrada inválida! Encerrando Programa.\n")
+
+                _= os.system('pause')
+
+                exit()
 
 #Programa
 menuPrincipal()
