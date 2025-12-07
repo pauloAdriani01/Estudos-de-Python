@@ -12,11 +12,10 @@ programaMenu = True
 #Lista que armazenará os produtos do carrinho
 meuCarrinho = []
 
-#Variável para guardar o tamanho da lista
-tamanhoCarrinho = len(meuCarrinho)
-
 def adicionarProduto(meuCarrinho):
     os.system('cls')
+
+    tamanhoCarrinho = len(meuCarrinho)
 
     print("Opção Escolhida: Adicionar produto\n")
 
@@ -33,9 +32,62 @@ def adicionarProduto(meuCarrinho):
 
     os.system('pause')
 
+def removerProduto(meuCarrinho):
+    os.system('cls')
+
+    tamanhoCarrinho = len(meuCarrinho)
+
+    print("Opção Escolhida: Remover produto\n")
+
+    if(tamanhoCarrinho == 0):
+        print("Seu carrinho está vazio.")
+        print("Voltando ao menu.\n")
+
+        os.system('pause')
+
+    else:
+        print(f"Número de itens no carrinho: {tamanhoCarrinho}\n")
+
+        print("Deseja mesmo remover um produto do carrinho? (S/N)")
+        print("S --> Sim")
+        print("N --> Não (Voltar ao menu)\n")
+
+        escolhaRemoverProduto = input().upper()
+
+        match escolhaRemoverProduto:
+            case 'S':
+                os.system('cls')
+
+                print("Digite o nome do produto que deseja remover do carrinho:")
+                nomeProduto = input().strip()
+
+                if(nomeProduto in meuCarrinho):
+                    meuCarrinho.remove(nomeProduto)
+
+                    print(f"\nO produto '{nomeProduto}' foi removido do carrinho com sucesso!")
+                    print("Voltando ao menu.\n")
+
+                    os.system('pause')
+
+                else:
+                    print(f"\nO produto '{nomeProduto}' não foi encontrado no carrinho.")
+                    print("Voltando ao menu.\n")
+
+                    os.system('pause')
+
+            case 'N':
+                print("\nVoltando ao menu.\n")
+
+                os.system('pause')
+
+            case _:
+                erroEntradaUsuario()
 
 def visualizarCarrinho(meuCarrinho):
     os.system('cls')
+
+    #Variável para guardar o tamanho da lista
+    tamanhoCarrinho = len(meuCarrinho)
 
     print("Opção Escolhida: Visualizar carrinho\n")
 
@@ -52,24 +104,73 @@ def visualizarCarrinho(meuCarrinho):
         print("S --> Sim")
         print("N --> Não (Voltar ao menu)\n")
 
-        try:
-            escolhaVisualizarItens = input().upper()
-            
-        except ValueError:
+        escolhaVisualizarItens = input().upper()
+
+        match escolhaVisualizarItens:
+            case 'S':
+                os.system('cls')
+
+                print("Itens no carrinho:\n")
+
+                meuCarrinho.sort()
+
+                for item in meuCarrinho:
+                    print(f"- {item}")
+
+                print("\nVoltando ao menu.\n")
+
+                os.system('pause')
+
+            case 'N':
+                print("\nVoltando ao menu.\n")
+
+                os.system('pause')
+
+            case _:
+                erroEntradaUsuario()
+
+def finalizarCompra(meuCarrinho):
+    os.system('cls')
+
+    tamanhoCarrinho = len(meuCarrinho)
+
+    print("Opção Escolhida: Finalizar compra\n")
+
+    print(f"Número de itens no carrinho: {tamanhoCarrinho}\n")
+
+    print("Itens no carrinho:\n")
+
+    meuCarrinho.sort()
+
+    for item in meuCarrinho:
+        print(f"- {item}")
+
+    print("\nDeseja realmente finalizar a compra? (S/N)")
+    print("S --> Sim")
+    print("N --> Não (Voltar ao menu)\n")
+
+    escolhaFinalizarCompra = input().upper()
+
+    match escolhaFinalizarCompra:
+        case 'S':
+            meuCarrinho.clear()
+
+            print("\nCompra finalizada com sucesso!")
+            print("Obrigad@ por utilizar o Mercado Digital.\n")
+
+            os.system('pause')
+
+            return False
+
+        case 'N':
+            print("\nVoltando ao menu.\n")
+
+            os.system('pause')
+
+            return True
+
+        case _:
             erroEntradaUsuario()
-
-        else:
-            match escolhaVisualizarItens:
-                case 'S':
-                    pass
-
-                case 'N':
-                    print("\nVoltando ao menu.\n")
-
-                    os.system('pause')
-
-                case _:
-                    erroEntradaUsuario()
 
 def sairPrograma(programaMenu):
     os.system('cls')
@@ -79,11 +180,13 @@ def sairPrograma(programaMenu):
     return False
 
 def erroEntradaUsuario():
-    _= os.system('cls')
+    os.system('cls')
 
     print("Opção inválida. Voltando ao menu.\n")
 
-    _= os.system('pause')
+    os.system('pause')
+
+    return True
 
 while programaMenu == True:
     os.system('cls')
@@ -112,13 +215,13 @@ while programaMenu == True:
                 adicionarProduto(meuCarrinho)
             
             case 2:
-                pass
+                removerProduto(meuCarrinho)
 
             case 3:
                 visualizarCarrinho(meuCarrinho)
 
             case 4:
-                pass
+                programaMenu = finalizarCompra(meuCarrinho)
 
             case 5:
                 programaMenu = sairPrograma(programaMenu)
