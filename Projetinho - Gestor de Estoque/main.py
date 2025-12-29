@@ -51,6 +51,8 @@ def adicionar_produto(estoque):
 
     }
 
+    os.system('cls')
+
     print(f'\nProduto {nome_produto} adicionado com sucesso!\n')
     print('Dados do produto adicionado:')
 
@@ -60,6 +62,8 @@ def adicionar_produto(estoque):
         print(f'{chave.capitalize()}: {valor}')
 
     print('-------------------------')
+
+    print()
 
     os.system('pause')
 
@@ -93,6 +97,26 @@ def ver_produto(estoque):
         print('Voltando ao menu principal.\n')
 
         os.system('pause')
+
+def ver_estoque(estoque):
+    os.system('cls')
+
+    print('Opção selecionada: Ver todo o estoque\n')
+
+    print('Dados do estoque completo:\n')
+
+    print('-------------------------')
+
+    for chave, valor in estoque.items():
+
+        for chave_interna, valor_interno in valor.items():
+            print(f'{chave_interna.capitalize()}: {valor_interno}')
+
+        print('-------------------------')
+
+    print()
+
+    os.system('pause')
 
 #Funções de validação de entrada de dados
 
@@ -162,7 +186,7 @@ while continuidade_menu == True:
             ver_produto(estoque)
 
         case 3:
-            pass
+            ver_estoque(estoque)
 
         case 4:
             pass
