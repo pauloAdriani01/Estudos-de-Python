@@ -1,5 +1,8 @@
 import os
 
+#Biblioteca para melhorar a interface do terminal (Negrito nesse caso)
+from rich import print
+
 '''
 DICIONÁRIO SÃO ORDENADOS, MUTÁVEIS E NÃO PERMITEM VALORES DUPLICADOS
 '''
@@ -108,6 +111,7 @@ def ver_estoque(estoque):
     print('-------------------------')
 
     for chave, valor in estoque.items():
+        print(f'[bold]Nome do Produto no Sistema:[/bold] {chave}')
 
         for chave_interna, valor_interno in valor.items():
             print(f'{chave_interna.capitalize()}: {valor_interno}')
@@ -117,6 +121,55 @@ def ver_estoque(estoque):
     print()
 
     os.system('pause')
+
+def atualizar_produto(estoque):
+    os.system('cls')
+
+    print('Opção selecionada: Atualizar um produto\n')
+
+    nome_produto = input('Digite o nome do produto que deseja atualizar: ')
+
+    nome_dicionario = nome_produto.lower()
+
+    if encontrar_protudo(estoque, nome_dicionario):
+        os.system('cls')
+
+        #Bold da biblioteca rich deixa o texto em negrito no terminal
+        print(f'Atualizando dados do produto: [bold]{nome_dicionario}[/bold]\n')
+        print('Dados atuais do produto:')
+
+        for chave, valor in estoque[nome_dicionario].items():
+            print(f'{chave.capitalize()}: {valor}')
+
+        print('\nQue tipo de dado desejaria atualizar?')
+
+        print('1 - Nome do Produto no Sistema (Nome do Dicionário)')
+        print('2 - Nome do Produto (Valor do Dicionário)')
+        print('3 - Quantidade do Produto')
+        print('4 - Preço do Produto')
+        print('5 - Voltar ao Menu Principal\n')
+
+        opcao = entrada_dados_numericos_inteiros(input('Digite a opção desejada: '))
+
+        match opcao:
+            case 1:
+                os.system('cls')
+                novo_nome_produto_sistema = input('Digite o novo nome do produto no sistema: ').lower()
+
+                estoque[novo_nome_produto_sistema] = estoque.pop(nome_dicionario)
+
+                os.system('cls')
+
+                print(f'Nome do produto no sistema atualizado com sucesso para: {novo_nome_produto_sistema}!')
+
+                print('Voltando ao menu principal.\n')
+
+                os.system('pause')
+
+                return estoque
+
+            case 2:
+                pass
 
 #Funções de validação de entrada de dados
 
@@ -189,7 +242,7 @@ while continuidade_menu == True:
             ver_estoque(estoque)
 
         case 4:
-            pass
+            atualizar_produto(estoque)
 
         case 5:
             pass
