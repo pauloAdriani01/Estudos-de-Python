@@ -36,7 +36,7 @@ def adicionar_produto(estoque):
 
     print('Opção selecionada: Adicionar um produto\n')
 
-    nome_produto = input('Digite o nome do produto: ')
+    nome_produto = input('Digite o nome do produto: ').capitalize()
 
     quantidade_produto = entrada_dados_numericos_inteiros(input('Digite a quantidade do produto: '))
 
@@ -63,7 +63,39 @@ def adicionar_produto(estoque):
 
     os.system('pause')
 
-#Funções para evitar erros na entrada de dados do usuário
+def ver_produto(estoque):
+    os.system('cls')
+
+    print('Opção selecionada: Ver um produto\n')
+
+    nome_produto = input('Digite o nome do produto que deseja ver: ')
+
+    nome_dicionario = nome_produto.lower()
+
+    if encontrar_protudo(estoque, nome_dicionario):
+        os.system('cls')
+
+        print(f'\nDados do produto {nome_produto.capitalize()}:')
+
+        print('-------------------------')
+
+        for chave, valor in estoque[nome_dicionario].items():
+            print(f'{chave.capitalize()}: {valor}')
+        
+        print('-------------------------\n')
+
+        os.system('pause')
+
+    else:
+        os.system('cls')
+
+        print(f'\n[ERRO] Produto {nome_produto.capitalize()} não encontrado no estoque!')
+        print('Voltando ao menu principal.\n')
+
+        os.system('pause')
+
+#Funções de validação de entrada de dados
+
 def entrada_dados_numericos_inteiros(dado):
     try:
         dado = int(dado)
@@ -98,6 +130,14 @@ def entrada_dados_numericos_floats(dado):
     else:
         return dado
 
+#Função para encontrar um produto no estoque
+def encontrar_protudo(estoque, nome_produto):
+    for chave in estoque.keys():
+        if chave == nome_produto:
+            return True
+
+    return False
+
 #Menu principal do sistema
 while continuidade_menu == True:
     os.system('cls')
@@ -119,7 +159,7 @@ while continuidade_menu == True:
             adicionar_produto(estoque)
 
         case 2:
-            pass
+            ver_produto(estoque)
 
         case 3:
             pass
