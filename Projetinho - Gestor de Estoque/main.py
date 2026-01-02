@@ -79,7 +79,7 @@ def ver_produto(estoque):
 
     nome_dicionario = nome_produto.lower()
 
-    if encontrar_protudo(estoque, nome_dicionario):
+    if encontrar_produto(estoque, nome_dicionario):
         os.system('cls')
 
         print(f'\nDados do produto {nome_produto.capitalize()}:')
@@ -131,7 +131,7 @@ def atualizar_produto(estoque):
 
     nome_dicionario = nome_produto.lower()
 
-    if encontrar_protudo(estoque, nome_dicionario):
+    if encontrar_produto(estoque, nome_dicionario):
         os.system('cls')
 
         #Bold da biblioteca rich deixa o texto em negrito no terminal
@@ -154,6 +154,7 @@ def atualizar_produto(estoque):
         match opcao:
             case 1:
                 os.system('cls')
+
                 novo_nome_produto_sistema = input('Digite o novo nome do produto no sistema: ').lower()
 
                 estoque[novo_nome_produto_sistema] = estoque.pop(nome_dicionario)
@@ -169,7 +170,135 @@ def atualizar_produto(estoque):
                 return estoque
 
             case 2:
-                pass
+                os.system('cls')
+
+                novo_nome_produto = input('Digite o novo nome do produto: ').capitalize()
+
+                estoque[nome_dicionario]['nome'] = novo_nome_produto
+
+                os.system('cls')
+
+                print(f'Nome do produto atualizado com sucesso para: {novo_nome_produto}!')
+
+                print('Voltando ao menu principal.\n')
+
+                os.system('pause')
+
+                return estoque
+
+            case 3:
+                os.system('cls')
+
+                nova_quantidade_produto = entrada_dados_numericos_inteiros(input('Digite a nova quantidade do produto: '))
+
+                if(nova_quantidade_produto is None):
+                    return estoque
+
+                estoque[nome_dicionario]['quantidade'] = nova_quantidade_produto
+
+                os.system('cls')
+
+                print(f'Quantidade do produto atualizada com sucesso para: {nova_quantidade_produto}!')
+
+                print('Voltando ao menu principal.\n')
+
+                os.system('pause')
+
+                return estoque
+
+            case 4:
+                os.system('cls')
+
+                novo_preco_produto = entrada_dados_numericos_floats(input('Digite o novo preço do produto: '))
+
+                if(novo_preco_produto is None):
+                    return estoque
+
+                estoque[nome_dicionario]['preço'] = novo_preco_produto
+
+                os.system('cls')
+
+                print(f'Preço do produto atualizado com sucesso para: {novo_preco_produto}!')
+
+                print('Voltando ao menu principal.\n')
+
+                os.system('pause')
+
+                return estoque
+
+            case 5:
+                os.system('cls')
+
+                print('Voltando ao menu principal.\n')
+
+                os.system('pause')
+
+            case _:
+                os.system('cls')
+
+                print('[ERRO] Opção inválida!')
+                print('Voltando ao menu principal.\n')
+
+                os.system('pause')
+
+def remover_produto(estoque):
+    os.system('cls')
+
+    print('Opção selecionada: Remover um produto\n')
+
+    nome_produto = input('Digite o nome do produto que deseja remover: ').lower()
+
+    if(encontrar_produto(estoque, nome_produto)):
+        print(f'\nTem certeza que deseja remover o produto [bold]{nome_produto.lower()}[/bold] do estoque? (Y/N)')
+
+        confirmacao = input('Digite sua opção: ').upper()
+
+        match confirmacao:
+            case 'Y':
+                os.system('cls')
+
+                estoque.pop(nome_produto)
+
+                print(f'\nProduto [bold]{nome_produto.lower()}[/bold] removido com sucesso do estoque!')
+
+                print('Voltando ao menu principal.\n')
+
+                os.system('pause')
+
+                return estoque
+
+            case 'N':
+                os.system('cls')
+
+                print('Exclusão cancelada com sucesso.')
+
+                print('Voltando ao menu principal.\n')
+
+                os.system('pause')
+
+            case _:
+                os.system('cls')
+
+                print('[ERRO] Opção inválida!')
+
+                print('Voltando ao menu principal.\n')
+
+                os.system('pause')
+
+    else:
+        os.system('cls')
+
+        print(f'\n[ERRO] Produto {nome_produto.lower()} não encontrado no estoque!')
+        print('Voltando ao menu principal.\n')
+
+        os.system('pause')
+
+def sair_sistema(estoque):
+    os.system('cls')
+
+    print('Obrigado por utilizar o sistema de estoque!\n')
+
+    return False
 
 #Funções de validação de entrada de dados
 
@@ -208,12 +337,25 @@ def entrada_dados_numericos_floats(dado):
         return dado
 
 #Função para encontrar um produto no estoque
-def encontrar_protudo(estoque, nome_produto):
+def encontrar_produto(estoque, nome_produto):
     for chave in estoque.keys():
         if chave == nome_produto:
             return True
 
     return False
+
+#Posso apenas fazer isso:
+'''
+def encontrar_produto(estoque, nome_produto):
+    if(nome_produto in estoque == True):
+        return True
+
+    else:
+        return False
+
+'''
+
+#Não preciso retornar o dicionário principal nas funções, pois dicionários são mutáveis em Python
 
 #Menu principal do sistema
 while continuidade_menu == True:
@@ -231,6 +373,9 @@ while continuidade_menu == True:
 
     opcao = entrada_dados_numericos_inteiros(input('Digite a opção desejada: '))
 
+    if opcao is None:
+        continue
+
     match opcao:
         case 1:
             adicionar_produto(estoque)
@@ -245,10 +390,15 @@ while continuidade_menu == True:
             atualizar_produto(estoque)
 
         case 5:
-            pass
+            remover_produto(estoque)
 
         case 6:
-            pass
+            continuidade_menu = sair_sistema(estoque)
 
         case _:
-            pass
+            os.system('cls')
+
+            print('[ERRO] Opção inválida!')
+            print('Voltando ao menu principal.\n')
+
+            os.system('pause')
